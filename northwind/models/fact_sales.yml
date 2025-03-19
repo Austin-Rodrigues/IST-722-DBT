@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: "Fact table containing one row per product item ordered"
+    columns:
+      - name: orderid
+        description: "Order ID"
+      - name: productid
+        description: "Product ID"
+      - name: employeeid
+        description: "Employee ID"
+      - name: customerid
+        description: "Customer ID"
+      - name: quantity
+        description: "Quantity Ordered"
+      - name: extendedpriceamount
+        description: "Total price before discount"
+      - name: discountamount
+        description: "Total discount amount"
+      - name: soldamount
+        description: "Sold amount after discount"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - orderid
+            - productid
