@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: obt_sales
+    description: Operational Business Transaction table combining fact_sales with dimension attributes for analysis and reporting.
+    columns:
+      - name: orderid
+        description: Order ID of the sales
+        tests:
+          - not_null
+      - name: orderdate
+        description: Order placed date
+      - name: year
+        description: Year of the order date
+      - name: month
+        description: Month of the order date
+      - name: customername
+        description: Name of the customer
+      - name: employeename
+        description: Name of the employee who handled the sale
+      - name: productname
+        description: Name of the product sold
+      - name: quantity
+        description: Number of products ordered
+      - name: extendedpriceamount
+        description: Total price of products before discount
+      - name: discountamount
+        description: Total discount applied to the products
+      - name: soldamount
+        description: Amount after discount is applied

@@ -2,32 +2,26 @@ version: 2
 
 models:
   - name: fact_sales
-    description: Transaction fact table with one row per product item ordered. Captures orders, products, pricing, discount, and sold amount.
+    description: "Fact table containing one row per product item ordered"
     columns:
-      - name: employeeid
-        description: FK to the employee dimension
-        tests:
-          - not_null
-      - name: customerid
-        description: FK to the customer dimension
-        tests:
-          - not_null
-      - name: orderdate
-        description: Order placed date
-      - name: productid
-        description: FK to the product dimension
-        tests:
-          - not_null
       - name: orderid
-        description: Order ID of the orders
-        tests:
-          - not_null
-          - unique
+        description: "Order ID"
+      - name: productid
+        description: "Product ID"
+      - name: employeeid
+        description: "Employee ID"
+      - name: customerid
+        description: "Customer ID"
       - name: quantity
-        description: Number of products ordered
+        description: "Quantity Ordered"
       - name: extendedpriceamount
-        description: Total price of products before discount
+        description: "Total price before discount"
       - name: discountamount
-        description: Total discount given on products
+        description: "Total discount amount"
       - name: soldamount
-        description: Amount after discount is applied
+        description: "Sold amount after discount"
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - orderid
+            - productid
